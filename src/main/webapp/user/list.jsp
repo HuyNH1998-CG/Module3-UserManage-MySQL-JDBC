@@ -26,6 +26,7 @@
                     <th>UserName</th>
                     <th>Password</th>
                     <th>Email</th>
+                    <th>Country</th>
                     <th>Action</th>
                 </tr>
                 <c:forEach var="user" items="${listUser}">
@@ -34,6 +35,7 @@
                         <td>${user.username}</td>
                         <td>${user.password}</td>
                         <td>${user.email}</td>
+                        <td>${user.country}</td>
                         <td>
                             <a href="/?action=edit&id=${user.id}" class="btn btn-primary">Edit</a>
                             <a href="/?action=delete&id=${user.id}" class="btn btn-primary">Delete</a>

@@ -56,7 +56,8 @@ public class UserDAO {
                 String username = rs.getString("username");
                 String password = rs.getString("password");
                 String email = rs.getString("email");
-                user = new user(id, username, password, email);
+                String country = rs.getString("country");
+                user = new user(id, username, password, email,country);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,7 +76,8 @@ public class UserDAO {
                 String username = rs.getString("username");
                 String password = rs.getString("password");
                 String email = rs.getString("email");
-                users.add(new user(id, username, password, email));
+                String country = rs.getString("country");
+                users.add(new user(id, username, password, email,country));
             }
         } catch (SQLException e) {
             e.printStackTrace();

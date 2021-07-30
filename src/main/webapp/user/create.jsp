@@ -35,6 +35,10 @@
                         <td><input type="text" name="email" id="email" size="45"></td>
                     </tr>
                     <tr>
+                        <th>Country:</th>
+                        <td><input type="text" name="country" id="country" size="45"></td>
+                    </tr>
+                    <tr>
                         <td colspan="2" align="center">
                             <button type="submit" class="btn btn-primary">Save</button>
                         </td>
@@ -44,5 +48,6 @@
         </div>
         <div class="col-sm-2"></div>
     </div>
+</div>
 </body>
 </html>

@@ -76,7 +76,8 @@ public class Controller extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        user newUser = new user(username,password,email);
+        String country = request.getParameter("country");
+        user newUser = new user(username,password,email,country);
         userDAO.insertUser(newUser);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
         dispatcher.forward(request,response);
@@ -86,7 +87,8 @@ public class Controller extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
-        user book = new user(id,username,password,email);
+        String country = request.getParameter("country");
+        user book = new user(id,username,password,email,country);
         userDAO.updateUser(book);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/edit.jsp");
         dispatcher.forward(request,response);

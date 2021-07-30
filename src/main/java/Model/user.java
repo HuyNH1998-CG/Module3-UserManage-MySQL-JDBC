@@ -5,22 +5,25 @@ public class user {
     protected String username;
     protected String password;
     protected String email;
+    protected String country;
 
     public user(){}
 
-    public user(String username, String password, String email){
+    public user(String username, String password, String email, String country){
         super();
         this.username = username;
         this.password = password;
         this.email = email;
+        this.country = country;
     }
 
-    public user(int id, String username, String password, String email) {
+    public user(int id, String username, String password, String email, String country) {
         super();
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
+        this.country = country;
     }
 
     public int getId() {
@@ -55,4 +58,11 @@ public class user {
         this.email = email;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 }

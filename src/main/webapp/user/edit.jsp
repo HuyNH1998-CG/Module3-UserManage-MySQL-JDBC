@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
     <title>Edit User</title>
@@ -31,11 +31,16 @@
                     </tr>
                     <tr>
                         <th>Password:</th>
-                        <td><input type="password" name="password" id="password" size="45"value="${user.password}"></td>
+                        <td><input type="password" name="password" id="password" size="45" value="${user.password}">
+                        </td>
                     </tr>
                     <tr>
                         <th>Email:</th>
                         <td><input type="text" name="email" id="email" size="45" value="${user.email}"></td>
+                    </tr>
+                    <tr>
+                        <th>Country:</th>
+                        <td><input type="text" name="country" id="country" size="45" value="${user.country}"></td>
                     </tr>
                     <tr>
                         <td colspan="2" align="center">
@@ -47,5 +52,6 @@
         </div>
         <div class="col-sm-2"></div>
     </div>
+</div>
 </body>
 </html>
