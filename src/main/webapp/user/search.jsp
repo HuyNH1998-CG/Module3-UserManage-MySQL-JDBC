@@ -1,8 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <html>
 <head>
-    <title>User Managerment</title>
+    <title>Search Result</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -12,23 +12,15 @@
 <div class="jumbotron text-center">
     <h1>User Management</h1><br>
     <h2>
-        <a href="/?action=create" class="btn btn-primary">Add new</a>
+        <a href="/?action=user" class="btn btn-primary">List All Users</a>
     </h2>
 </div>
 <div class="container">
     <div class="row">
         <div class="col-sm-2">
-            <a href="/?action=sort" class="btn btn-primary">Sort</a><br>
-            <br>
-            <p1>Search user by country</p1>
-            <form action="/?action=search" method="post">
-                <input type="text" name="country" id="country">
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
+
         </div>
-        <div class="col-sm-1">
-        </div>
-        <div class="col-sm-9">
+        <div class="col-sm-8">
             <table class="container">
                 <h2>List of user</h2>
                 <tr>
@@ -54,6 +46,7 @@
                 </c:forEach>
             </table>
         </div>
+        <div class="col-sm-2"></div>
     </div>
 </div>
 </body>

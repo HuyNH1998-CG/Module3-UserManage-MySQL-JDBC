@@ -11,12 +11,13 @@ public class UserDAO {
     private String jdbcUserName = "root";
     private String jdbcPassWord = "Kanze9152";
 
-    private static final String INSERT_USERS_SQL = "insert into users (username,password,email) value (?,?,?);";
-    private static final String select_user_by_id = "select id,username,password,email from users where id = ?;";
+    private static final String INSERT_USERS_SQL = "insert into users (username,password,email,country) value (?,?,?);";
+    private static final String select_user_by_id = "select id,username,password,email,country from users where id = ?;";
     private static final String select_all_users = "select * from users;";
     private static final String delete_users_sql = "delete from users where id=?;";
-    private static final String update_user_sql = "update users set username =?,password=?,email=? where id=?;";
-
+    private static final String update_user_sql = "update users set username =?,password=?,email=?,country=? where id=?;";
+    private static final String sort_by_name = "select * from users order by username asc;";
+    private static final String select_user_by_country = "select id,username,password,email,country from users where country = ?;";
     public UserDAO() {
     }
 
@@ -38,6 +39,7 @@ public class UserDAO {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getEmail());
+            preparedStatement.setString(4, user.getCountry());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
@@ -57,7 +59,7 @@ public class UserDAO {
                 String password = rs.getString("password");
                 String email = rs.getString("email");
                 String country = rs.getString("country");
-                user = new user(id, username, password, email,country);
+                user = new user(id, username, password, email, country);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,10 +102,51 @@ public class UserDAO {
             statement.setString(1, user.getUsername());
             statement.setString(2, user.getPassword());
             statement.setString(3, user.getEmail());
-            statement.setInt(4, user.getId());
+            statement.setString(4, user.getCountry());
+            statement.setInt(5, user.getId());
             rowUpdated = statement.executeUpdate() > 0;
         }
         return rowUpdated;
+    }
+    public List<user> selectUserByCountry(String countries) {
+        List<user> users = new ArrayList<>();
+        try (Connection connection = getConnection();) {
+            PreparedStatement preparedStatement = connection.prepareStatement(select_user_by_country);
+            preparedStatement.setString(1, countries);
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                String country = rs.getString("country");
+                users.add(new user(id, username, password, email,country));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+    public List<user> sortUser() {
+        List<user> users = new ArrayList<>();
+        try (Connection connection = getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(sort_by_name);
+            System.out.println(preparedStatement);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
+                String email = rs.getString("email");
+                String country = rs.getString("country");
+                users.add(new user(id, username, password, email,country));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 
     private void printSQLException(SQLException ex){
