@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/dome?useSSL=false";
+    private String jdbcURL = "jdbc:mysql://localhost:3306/dome?userSSL=false&useUnicode=yes&characterEncoding=UTF-8";
     private String jdbcUserName = "root";
     private String jdbcPassWord = "Kanze9152";
 
-    private static final String INSERT_USERS_SQL = "insert into users (username,password,email,country) value (?,?,?);";
+    private static final String INSERT_USERS_SQL = "insert into users (username,password,email,country) value (?,?,?,?);";
     private static final String select_user_by_id = "select id,username,password,email,country from users where id = ?;";
     private static final String select_all_users = "select * from users;";
     private static final String delete_users_sql = "delete from users where id=?;";
