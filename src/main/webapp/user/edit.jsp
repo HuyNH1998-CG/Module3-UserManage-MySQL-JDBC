@@ -15,7 +15,6 @@
         <a href="/?action=user" class="btn btn-primary">List All Users</a>
     </h2>
 </div>
-
 <div class="container">
     <div class="row">
         <div class="col-sm-2"></div>
